@@ -1,3 +1,5 @@
+#include <ctype.h>
+
 #include "stdafx.h"
 #include "codedis.h"
 
@@ -12,6 +14,16 @@ void usage()
    printf("  -p            Show address in [pc, imm] format in ldr instructions\n");
    printf("\n");
 }
+
+// 25/3 blippy added
+void _strlwr(char *str)
+{
+	while(*str) {
+		*str = tolower(*str++);
+	}
+
+}
+
 
 bool parse_number(char *lpstrNum, u32 &iNum)
 {

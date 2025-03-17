@@ -2,6 +2,9 @@
 #include "codedis.h"
 #include "fields.h"
 
+constexpr auto fmt1 = "#%lld";
+constexpr auto fmt2 = "#-%lld";
+
 int AdcImm(CFieldSet &cFieldSet, int iT)
 {
    switch (iT)
@@ -2907,26 +2910,29 @@ void FormatInstruction(const char *lpstrFormat, CFieldSet *lpcFieldSet, char *lp
             break;
          case 'I': // Immediate value
             {
-               char strImm[16];
+               //char strImm[16];
+               char strImm[32];
 
                s64 iImm = lpcFieldSet->GetLong(*lpstrFormat++);
                if (iImm >= 0)
-                  sprintf(strImm, "#%I64d", iImm);
+                  //sprintf(strImm, "#%I64d", iImm);
+                  sprintf(strImm, fmt1, iImm);
                else
-                  sprintf(strImm, "#-%I64d", -iImm);
+                  sprintf(strImm, fmt2, -iImm);
                strcat(lpstrBuffer, strImm);
             }
             break;
          case 'i': // Immediate value +/- i<addflag_field><value_field>
             {
-               char strImm[16];
+               //char strImm[16];
+               char strImm[32];
 
                s32 iAdd = lpcFieldSet->GetInt(*lpstrFormat++);
                s64 iImm = lpcFieldSet->GetLong(*lpstrFormat++);
                if (iAdd)
-                  sprintf(strImm, "#%I64d", iImm);
+                  sprintf(strImm, fmt1, iImm);
                else
-                  sprintf(strImm, "#-%I64d", iImm);
+                  sprintf(strImm, fmt2, iImm);
                strcat(lpstrBuffer, strImm);
             }
             break;

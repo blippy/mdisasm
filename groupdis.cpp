@@ -1,4 +1,4 @@
-#include <stdafx.h>
+#include "stdafx.h"
 #include "codedis.h"
 
 u32   g_uiCurrentAddr;

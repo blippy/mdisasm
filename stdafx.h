@@ -14,6 +14,6 @@
 #include <sys/stat.h>
 #include <assert.h>
 
-#include <windows.h>
+//#include <windows.h>
 
 #include "types.h"
